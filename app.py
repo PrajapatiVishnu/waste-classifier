@@ -5,8 +5,10 @@ from skimage.feature import hog
 import joblib
 from PIL import Image
 
-model = joblib.load("svm_model.pkl")
+# Load model
+model = joblib.load("model\svm_model.pkl")
 
+# ---------------- FEATURE EXTRACTION (unchanged) ---------------- #
 def extract_features(image):
     img = np.array(image.convert('RGB'))
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
@@ -32,11 +34,30 @@ def extract_features(image):
     return np.concatenate([hog_features, np.array(color_hist)])
 
 
+# ---------------- SIDEBAR NAVIGATION ---------------- #
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "About"])
+page = st.sidebar.radio("Go to", ["Home", "Prediction", "About"])
 
+# ---------------- HOME PAGE ---------------- #
 if page == "Home":
-    st.title("Waste Classification From Images Using SVM")
+    st.title("Waste Classification System")
+
+    st.write("""
+    This web application classifies waste into **Organic** or **Recyclable**
+    categories.
+
+    ### Features
+    - Upload waste images
+    - Automatic feature extraction
+    - Fast and accurate prediction
+
+    Use the **Prediction page** from the sidebar.
+    """)
+
+# ---------------- PREDICTION PAGE ---------------- #
+elif page == "Prediction":
+    st.title("Waste Classification")
+
     st.write("Upload an image to classify waste as Organic or Recyclable.")
 
     uploaded_file = st.file_uploader(
@@ -48,6 +69,7 @@ if page == "Home":
         image = Image.open(uploaded_file)
         st.image(image, caption="Uploaded Image", use_column_width=True)
 
+        # Extract features and predict
         features = extract_features(image)
         prediction = model.predict([features])[0]
 
@@ -56,14 +78,15 @@ if page == "Home":
         else:
             result = "Recyclable Waste"
 
-        st.subheader("Prediction:")
+        st.subheader("Prediction Result:")
         st.success(result)
 
-if page == "About":
+# ---------------- ABOUT PAGE ---------------- #
+elif page == "About":
     st.title("About This Project")
 
     st.write("""
-    ### Waste Classification from Images using SVM
+    ### Waste Classification from Images
 
     This project is a **Machine Learning based web application** that classifies
     waste into two categories:
@@ -79,15 +102,8 @@ if page == "About":
     - **SVM (Support Vector Machine)** for classification
     - **Streamlit** for web app interface
 
-    ### How it Works
+    ### Purpose
 
-    1. User uploads an image
-    2. Image is resized and converted to grayscale
-    3. HOG features are extracted
-    4. Trained SVM model predicts the waste category
-
-    ### Purpose of the Project
-
-    This system helps in **automating waste segregation**, which is important for
-    recycling, environmental protection, and smart city initiatives.
+    This system helps in **automating waste segregation**, supporting
+    recycling and environmental sustainability initiatives.
     """)
