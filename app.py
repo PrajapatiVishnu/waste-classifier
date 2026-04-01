@@ -8,16 +8,13 @@ from PIL import Image
 st.markdown("""
 <style>
 
-/* ---------------- GLOBAL ---------------- */
 .stApp {
     background: linear-gradient(to right, #e8f5e9, #e3f2fd);
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Remove Streamlit default header/footer */
 footer {visibility: hidden;}
 
-/* ---------------- SIDEBAR ---------------- */
 section[data-testid="stSidebar"] {
     background: linear-gradient(180deg, #1b5e20, #0d47a1);
     padding-top: 20px;
@@ -27,12 +24,10 @@ section[data-testid="stSidebar"] * {
     color: white !important;
 }
 
-/* Remove radio dot arrow */
 input[type="radio"] {
     accent-color: #66bb6a;
 }
 
-/* ---------------- HERO TITLE ---------------- */
 .hero {
     background: linear-gradient(90deg, #2e7d32, #1e88e5);
     padding: 25px;
@@ -44,7 +39,6 @@ input[type="radio"] {
     margin-bottom: 25px;
 }
 
-/* ---------------- CARDS ---------------- */
 .card {
     background: white;
     padding: 25px;
@@ -57,7 +51,6 @@ input[type="radio"] {
     display: none;
 }
 
-/* ---------------- BUTTONS ---------------- */
 .stButton>button {
     background: linear-gradient(90deg, #2e7d32, #1e88e5);
     color: white;
@@ -71,7 +64,6 @@ input[type="radio"] {
     background: linear-gradient(90deg, #1b5e20, #1565c0);
 }
 
-/* ---------------- FILE UPLOADER ---------------- */
 [data-testid="stFileUploader"] {
     border: 2px dashed #2e7d32;
     padding: 20px;
@@ -79,7 +71,6 @@ input[type="radio"] {
     background-color: #f1f8e9;
 }
 
-/* ---------------- FOOTER ---------------- */
 .footer {
     text-align: center;
     padding: 15px;
