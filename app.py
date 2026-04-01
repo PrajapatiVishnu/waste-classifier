@@ -60,14 +60,6 @@ if page == "About":
     - **Organic Waste** (food, leaves, biodegradable materials)
     - **Recyclable Waste** (plastic, metal, glass, paper)
 
-    ### Technologies Used
-
-    - **Python**
-    - **OpenCV** for image processing
-    - **Scikit-image (HOG)** for feature extraction
-    - **SVM (Support Vector Machine)** for classification
-    - **Streamlit** for web app interface
-
     ### How it Works
 
     1. User uploads an image
