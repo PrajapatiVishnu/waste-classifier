@@ -6,7 +6,7 @@ import joblib
 from PIL import Image
 
 # Load model
-model = joblib.load("model\svm_model.pkl")
+model = joblib.load("svm_model.pkl")
 
 # ---------------- FEATURE EXTRACTION (unchanged) ---------------- #
 def extract_features(image):
