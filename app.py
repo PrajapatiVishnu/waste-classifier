@@ -5,10 +5,79 @@ from skimage.feature import hog
 import joblib
 from PIL import Image
 
-# Load model
+st.markdown("""
+<style>
+/* Main background */
+.stApp {
+    background-color: #f5f7fa;
+}
+
+/* Title styling */
+h1 {
+    color: #1f4e79;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Subheaders */
+h2, h3 {
+    color: #2e7d32;
+}
+
+/* Sidebar styling */
+section[data-testid="stSidebar"] {
+    background-color: #1f4e79;
+    color: white;
+}
+
+/* Sidebar text */
+section[data-testid="stSidebar"] .css-1v0mbdj, 
+section[data-testid="stSidebar"] label {
+    color: white !important;
+}
+
+/* Buttons */
+.stButton>button {
+    background-color: #2e7d32;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: none;
+}
+
+.stButton>button:hover {
+    background-color: #256428;
+}
+
+/* File uploader */
+[data-testid="stFileUploader"] {
+    border: 2px dashed #1f4e79;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+/* Card container */
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+.card:empty {
+    display: none;
+}
+</style>
+""", unsafe_allow_html=True)
+
 model = joblib.load("svm_model.pkl")
 
-# ---------------- FEATURE EXTRACTION (unchanged) ---------------- #
 def extract_features(image):
     img = np.array(image.convert('RGB'))
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
@@ -33,15 +102,12 @@ def extract_features(image):
 
     return np.concatenate([hog_features, np.array(color_hist)])
 
-
-# ---------------- SIDEBAR NAVIGATION ---------------- #
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Prediction", "About"])
 
-# ---------------- HOME PAGE ---------------- #
 if page == "Home":
     st.title("Waste Classification System")
-
+    st.markdown('<div class="card">', unsafe_allow_html=True)
     st.write("""
     This web application classifies waste into **Organic** or **Recyclable**
     categories.
@@ -53,11 +119,11 @@ if page == "Home":
 
     Use the **Prediction page** from the sidebar.
     """)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-# ---------------- PREDICTION PAGE ---------------- #
 elif page == "Prediction":
     st.title("Waste Classification")
-
+    st.markdown('<div class="card">', unsafe_allow_html=True)
     st.write("Upload an image to classify waste as Organic or Recyclable.")
 
     uploaded_file = st.file_uploader(
@@ -80,11 +146,11 @@ elif page == "Prediction":
 
         st.subheader("Prediction Result:")
         st.success(result)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-# ---------------- ABOUT PAGE ---------------- #
 elif page == "About":
     st.title("About This Project")
-
+    st.markdown('<div class="card">', unsafe_allow_html=True)
     st.write("""
     ### Waste Classification from Images
 
@@ -107,3 +173,4 @@ elif page == "About":
     This system helps in **automating waste segregation**, supporting
     recycling and environmental sustainability initiatives.
     """)
+    st.markdown('</div>', unsafe_allow_html=True)
