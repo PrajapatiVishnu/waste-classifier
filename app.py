@@ -68,7 +68,6 @@ section[data-testid="stSidebar"] label {
 
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
-header {visibility: hidden;}
 
 .card:empty {
     display: none;
