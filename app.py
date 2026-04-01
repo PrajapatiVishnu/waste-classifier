@@ -30,6 +30,14 @@ section[data-testid="stSidebar"] {
     color: white;
 }
 
+[data-testid="stToolbar"] a {
+    display: none;
+}
+
+[data-testid="stToolbar"] {
+    right: 0;
+}
+
 /* Sidebar text */
 section[data-testid="stSidebar"] .css-1v0mbdj, 
 section[data-testid="stSidebar"] label {
