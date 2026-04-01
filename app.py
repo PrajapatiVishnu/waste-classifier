@@ -15,7 +15,6 @@ st.markdown("""
 }
 
 /* Remove Streamlit default header/footer */
-header {visibility: hidden;}
 footer {visibility: hidden;}
 
 /* ---------------- SIDEBAR ---------------- */
@@ -52,6 +51,10 @@ input[type="radio"] {
     border-radius: 15px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     margin-bottom: 25px;
+}
+
+.card:empty {
+    display: none;
 }
 
 /* ---------------- BUTTONS ---------------- */
