@@ -26,14 +26,14 @@ h2, h3 {
 
 /* Sidebar styling */
 section[data-testid="stSidebar"] {
-    background-color: #1f4e79;
+    background-color: black;
     color: white;
 }
 
 /* Sidebar text */
 section[data-testid="stSidebar"] .css-1v0mbdj, 
 section[data-testid="stSidebar"] label {
-    color: white !important;
+    color: white;
 }
 
 /* Buttons */
