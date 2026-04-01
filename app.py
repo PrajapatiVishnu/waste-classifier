@@ -7,79 +7,83 @@ from PIL import Image
 
 st.markdown("""
 <style>
-/* Main background */
+
+/* ---------------- GLOBAL ---------------- */
 .stApp {
-    background-color: #f5f7fa;
+    background: linear-gradient(to right, #e8f5e9, #e3f2fd);
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Title styling */
-h1 {
-    color: #1f4e79;
+/* Remove Streamlit default header/footer */
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* ---------------- SIDEBAR ---------------- */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #1b5e20, #0d47a1);
+    padding-top: 20px;
+}
+
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+/* Remove radio dot arrow */
+input[type="radio"] {
+    accent-color: #66bb6a;
+}
+
+/* ---------------- HERO TITLE ---------------- */
+.hero {
+    background: linear-gradient(90deg, #2e7d32, #1e88e5);
+    padding: 25px;
+    border-radius: 15px;
     text-align: center;
+    color: white;
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* ---------------- CARDS ---------------- */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    margin-bottom: 25px;
+}
+
+/* ---------------- BUTTONS ---------------- */
+.stButton>button {
+    background: linear-gradient(90deg, #2e7d32, #1e88e5);
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 18px;
     font-weight: bold;
 }
 
-/* Subheaders */
-h2, h3 {
-    color: #2e7d32;
-}
-
-/* Sidebar styling */
-section[data-testid="stSidebar"] {
-    background-color: black;
-    color: white;
-}
-
-[data-testid="stToolbar"] a {
-    display: none;
-}
-
-[data-testid="stToolbar"] {
-    right: 0;
-}
-
-/* Sidebar text */
-section[data-testid="stSidebar"] .css-1v0mbdj, 
-section[data-testid="stSidebar"] label {
-    color: white;
-}
-
-/* Buttons */
-.stButton>button {
-    background-color: #2e7d32;
-    color: white;
-    border-radius: 8px;
-    padding: 10px 20px;
-    border: none;
-}
-
 .stButton>button:hover {
-    background-color: #256428;
+    background: linear-gradient(90deg, #1b5e20, #1565c0);
 }
 
-/* File uploader */
+/* ---------------- FILE UPLOADER ---------------- */
 [data-testid="stFileUploader"] {
-    border: 2px dashed #1f4e79;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #ffffff;
-}
-
-/* Card container */
-.card {
-    background-color: white;
+    border: 2px dashed #2e7d32;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    background-color: #f1f8e9;
 }
 
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-
-.card:empty {
-    display: none;
+/* ---------------- FOOTER ---------------- */
+.footer {
+    text-align: center;
+    padding: 15px;
+    color: gray;
+    font-size: 14px;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
